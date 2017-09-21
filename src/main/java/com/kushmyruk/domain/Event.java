@@ -1,11 +1,8 @@
 package com.kushmyruk.domain;
 
-import org.springframework.stereotype.Repository;
-
 import java.sql.Date;
 import java.util.*;
 
-@Repository
 public class Event extends DomainObject {
     private String name;
     private Set<Date> airDates = new TreeSet<>();

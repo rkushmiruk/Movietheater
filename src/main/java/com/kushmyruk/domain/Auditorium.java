@@ -1,11 +1,8 @@
 package com.kushmyruk.domain;
 
-import org.springframework.stereotype.Repository;
-
 import java.util.Collections;
 import java.util.Set;
 
-@Repository
 public class Auditorium extends DomainObject {
     private String name;
     private Long numberOfSeats;

@@ -1,11 +1,8 @@
 package com.kushmyruk.domain;
 
-import org.springframework.stereotype.Repository;
-
 import java.util.Set;
 import java.util.TreeSet;
 
-@Repository
 public class User extends DomainObject {
     private String firstName;
     private String lastName;
@@ -80,6 +77,7 @@ public class User extends DomainObject {
     @Override
     public String toString() {
         return "User{" +
+                "id="+ id+'\''+
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

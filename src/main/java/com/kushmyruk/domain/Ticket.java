@@ -1,10 +1,7 @@
 package com.kushmyruk.domain;
 
-import org.springframework.stereotype.Repository;
-
 import java.sql.Date;
 
-@Repository
 public class Ticket extends DomainObject implements Comparable<Ticket> {
     private User user;
     private Event event;
