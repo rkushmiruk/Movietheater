@@ -10,12 +10,11 @@ public interface EventDao extends GenericDao<Event, Long> {
      * Checks if event is aired on particular <code>dateTime</code> and assigns
      * auditorium to it.
      *
-     * @param dateTime   Date and time of aired event for which to assign
      * @param auditorium Auditorium that should be assigned
      * @return <code>true</code> if successful, <code>false</code> if event is
      * not aired on that date
      */
-    boolean assignAuditorium(Date dateTime, Auditorium auditorium);
+    boolean assignAuditorium(Event event, Date date, Auditorium auditorium);
 
 
     /**
@@ -25,7 +24,7 @@ public interface EventDao extends GenericDao<Event, Long> {
      * @return <code>true</code> if successful, <code>false</code> if not
      * removed
      */
-    boolean removeAuditoriumAssignment(Date dateTime);
+    boolean removeAuditoriumAssignment(Date dateTime, Event event);
 
 
     /**
@@ -35,7 +34,7 @@ public interface EventDao extends GenericDao<Event, Long> {
      * @return <code>true</code> if successful, <code>false</code> if already
      * there
      */
-    boolean addAirDateTime(Date dateTime);
+    boolean addAirDateTime(Date dateTime, Event event);
 
 
     /**
@@ -46,7 +45,7 @@ public interface EventDao extends GenericDao<Event, Long> {
      * @return <code>true</code> if successful, <code>false</code> if already
      * there
      */
-    boolean addAirDateTime(Date dateTime, Auditorium auditorium);
+    boolean addAirDateTime(Event event, Date dateTime, Auditorium auditorium);
 
 
     /**
@@ -56,7 +55,7 @@ public interface EventDao extends GenericDao<Event, Long> {
      * @param dateTime Date and time to remove
      * @return <code>true</code> if successful, <code>false</code> if not there
      */
-    boolean removeAirDateTime(Date dateTime);
+    boolean removeAirDateTime(Event event, Date dateTime);
 
 
     /**
@@ -65,7 +64,7 @@ public interface EventDao extends GenericDao<Event, Long> {
      * @param dateTime Date and time to check
      * @return <code>true</code> event airs on that date and time
      */
-    boolean airsOnDateTime(Date dateTime);
+    boolean airsOnDateTime(Event event, Date dateTime);
 
 
     /**
@@ -74,7 +73,7 @@ public interface EventDao extends GenericDao<Event, Long> {
      * @param date Date to ckeck
      * @return <code>true</code> event airs on that date
      */
-    boolean airsOnDate(Date date);
+    boolean airsOnDate(Event event, Date date);
 
 
     /**
@@ -85,7 +84,7 @@ public interface EventDao extends GenericDao<Event, Long> {
      * @param to   End date to check
      * @return <code>true</code> event airs on dates
      */
-    boolean airsOnDates(Date from, Date to);
+    boolean airsOnDates(Event event, Date from, Date to);
 
 
 }

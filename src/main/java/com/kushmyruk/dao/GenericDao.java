@@ -43,17 +43,5 @@ public interface GenericDao<DomainObject, ID> {
      */
     boolean delete(ID id);
 
-    /**
-     * Find domainObject id
-     *
-     * @return domainObject id
-     */
-    Optional<Long> findId();
 
-    /**
-     * returns domainObject name
-     *
-     * @return domainObject name
-     */
-    String getName();
 }
