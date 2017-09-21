@@ -2,11 +2,11 @@ package com.kushmyruk.service;
 
 import com.kushmyruk.domain.Event;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public interface EventService {
+public interface EventService extends AbstractDomainObjectService<Event> {
     /**
      * Finding event by name
      *
@@ -22,7 +22,7 @@ public interface EventService {
      * @param to   End date inclusive
      * @return Set of events
      */
-    Set<Event> getForDateRange(LocalDate from, LocalDate to);
+    Set<Event> getForDateRange(Date from, Date to);
 
     /**
      * Return events from 'now' till the the specified date time

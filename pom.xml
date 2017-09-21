@@ -8,7 +8,11 @@
     <artifactId>movietheater</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <spring.version>4.3.6.RELEASE</spring.version>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <findbugs.version>3.0.1</findbugs.version>
+        <junit.version>4.12</junit.version>
+        <spring.version>4.3.4.RELEASE</spring.version>
     </properties>
 
     <build>
@@ -17,10 +21,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.3</version>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -60,7 +71,19 @@
             <version>1.2.17</version>
         </dependency>
 
+        <!--JUNIT-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
 
+        <!--FindBugs-->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${findbugs.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

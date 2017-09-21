@@ -4,7 +4,7 @@ import com.kushmyruk.domain.Event;
 import com.kushmyruk.domain.Ticket;
 import com.kushmyruk.domain.User;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 import java.util.Set;
 
 public interface BookingService {
@@ -19,7 +19,7 @@ public interface BookingService {
      * @param seats    Set of seat numbers that user wants to buy
      * @return total price
      */
-    double getTicketsPrice(Event event, LocalDateTime dateTime, User user, Set<Long> seats);
+    double getTicketsPrice(Event event, Date dateTime, User user, Set<Long> seats);
 
     /**
      * Books tickets in internal system. If user is not
@@ -36,6 +36,6 @@ public interface BookingService {
      * @param dateTime Date and time of airing of event
      * @return set of all purchased tickets
      */
-    Set<Ticket> getPurchasedTicketsForEvent(Event event, LocalDateTime dateTime);
+    Set<Ticket> getPurchasedTicketsForEvent(Event event, Date dateTime);
 
 }

@@ -1,17 +1,28 @@
 package com.kushmyruk.domain;
 
-import java.time.LocalDateTime;
-import java.util.NavigableMap;
-import java.util.NavigableSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+import java.util.*;
+
+@Repository
 public class Event extends DomainObject {
     private String name;
-    private NavigableSet<LocalDateTime> airDates = new TreeSet<>();
+    private Set<Date> airDates = new TreeSet<>();
     private Double basePrice;
     private EventRating rating;
-    private NavigableMap<LocalDateTime, Auditorium> auditoriums = new TreeMap<>();
+    private Auditorium auditorium;
+
+    public Event(String name, Set<Date> airDates, Double basePrice, EventRating rating, Auditorium auditorium) {
+        this.name = name;
+        this.airDates = airDates;
+        this.basePrice = basePrice;
+        this.rating = rating;
+        this.auditorium = auditorium;
+    }
+
+    public Event() {
+    }
 
     public String getName() {
         return name;
@@ -21,11 +32,11 @@ public class Event extends DomainObject {
         this.name = name;
     }
 
-    public NavigableSet<LocalDateTime> getAirDates() {
+    public Set<Date> getAirDates() {
         return airDates;
     }
 
-    public void setAirDates(NavigableSet<LocalDateTime> airDates) {
+    public void setAirDates(Set<Date> airDates) {
         this.airDates = airDates;
     }
 
@@ -45,12 +56,12 @@ public class Event extends DomainObject {
         this.rating = rating;
     }
 
-    public NavigableMap<LocalDateTime, Auditorium> getAuditoriums() {
-        return auditoriums;
+    public Auditorium getAuditorium() {
+        return auditorium;
     }
 
-    public void setAuditoriums(NavigableMap<LocalDateTime, Auditorium> auditoriums) {
-        this.auditoriums = auditoriums;
+    public void setAuditorium(Auditorium auditorium) {
+        this.auditorium = auditorium;
     }
 
     @Override
@@ -60,24 +71,21 @@ public class Event extends DomainObject {
 
         Event event = (Event) o;
 
-        if (Double.compare(event.basePrice, basePrice) != 0) return false;
         if (name != null ? !name.equals(event.name) : event.name != null) return false;
         if (airDates != null ? !airDates.equals(event.airDates) : event.airDates != null) return false;
+        if (basePrice != null ? !basePrice.equals(event.basePrice) : event.basePrice != null) return false;
         if (rating != event.rating) return false;
-        return auditoriums != null ? auditoriums.equals(event.auditoriums) : event.auditoriums == null;
+        return auditorium != null ? auditorium.equals(event.auditorium) : event.auditorium == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = name != null ? name.hashCode() : 0;
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (airDates != null ? airDates.hashCode() : 0);
-        temp = Double.doubleToLongBits(basePrice);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (basePrice != null ? basePrice.hashCode() : 0);
         result = 31 * result + (rating != null ? rating.hashCode() : 0);
-        result = 31 * result + (auditoriums != null ? auditoriums.hashCode() : 0);
+        result = 31 * result + (auditorium != null ? auditorium.hashCode() : 0);
         return result;
     }
 
@@ -88,7 +96,7 @@ public class Event extends DomainObject {
                 ", airDates=" + airDates +
                 ", basePrice=" + basePrice +
                 ", rating=" + rating +
-                ", auditoriums=" + auditoriums +
+                ", auditorium=" + auditorium +
                 '}';
     }
 }

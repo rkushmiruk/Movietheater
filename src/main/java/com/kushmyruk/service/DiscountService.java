@@ -3,6 +3,7 @@ package com.kushmyruk.service;
 import com.kushmyruk.domain.Event;
 import com.kushmyruk.domain.User;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 public interface DiscountService {
@@ -16,6 +17,6 @@ public interface DiscountService {
      * @param numberOfTickets Number of tickets that user buys
      * @return discount value from 0 to 100
      */
-    byte getDiscount(User user, Event event, LocalDateTime airDateTime, long numberOfTickets);
+    byte getDiscount(User user, Event event, Date airDateTime, long numberOfTickets);
 
 }

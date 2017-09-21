@@ -1,11 +1,14 @@
 package com.kushmyruk.domain;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.Collections;
 import java.util.Set;
 
+@Repository
 public class Auditorium extends DomainObject {
     private String name;
-    private long numberOfSeats;
+    private Long numberOfSeats;
     private Set<Long> vipSeats = Collections.emptySet();
 
     public String getName() {
@@ -16,11 +19,11 @@ public class Auditorium extends DomainObject {
         this.name = name;
     }
 
-    public long getNumberOfSeats() {
+    public Long getNumberOfSeats() {
         return numberOfSeats;
     }
 
-    public void setNumberOfSeats(long numberOfSeats) {
+    public void setNumberOfSeats(Long numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
 

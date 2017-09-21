@@ -1,14 +1,17 @@
 package com.kushmyruk.domain;
 
-import java.time.LocalDateTime;
+import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+
+@Repository
 public class Ticket extends DomainObject implements Comparable<Ticket> {
     private User user;
     private Event event;
-    private LocalDateTime dateTime;
+    private Date dateTime;
     private long seat;
 
-    public Ticket(User user, Event event, LocalDateTime dateTime, long seat) {
+    public Ticket(User user, Event event, Date dateTime, long seat) {
         this.user = user;
         this.event = event;
         this.dateTime = dateTime;
@@ -34,11 +37,11 @@ public class Ticket extends DomainObject implements Comparable<Ticket> {
         this.event = event;
     }
 
-    public LocalDateTime getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -84,7 +87,19 @@ public class Ticket extends DomainObject implements Comparable<Ticket> {
     }
 
     @Override
-    public int compareTo(Ticket o) {
-        return 0;
+    public int compareTo(Ticket other) {
+        if (other == null) {
+            return 1;
+        }
+        int result = dateTime.compareTo(other.getDateTime());
+
+        if (result == 0) {
+            result = event.getName().compareTo(other.getEvent().getName());
+        }
+        if (result == 0) {
+            result = Long.compare(seat, other.getSeat());
+        }
+        return result;
+
     }
 }

@@ -1,19 +1,22 @@
 package com.kushmyruk.domain;
 
-import java.util.NavigableSet;
+import org.springframework.stereotype.Repository;
+
+import java.util.Set;
 import java.util.TreeSet;
 
+@Repository
 public class User extends DomainObject {
     private String firstName;
     private String lastName;
     private String email;
-    private NavigableSet<Ticket> tickets = new TreeSet<>();
+    private Set<Ticket> tickets = new TreeSet<>();
 
-    public User(String firstName, String lastName, String email, NavigableSet<Ticket> tickets) {
+    public User(Long id, String firstName, String lastName, String email) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.tickets = tickets;
     }
 
     public User() {
@@ -43,11 +46,11 @@ public class User extends DomainObject {
         this.email = email;
     }
 
-    public NavigableSet<Ticket> getTickets() {
+    public Set<Ticket> getTickets() {
         return tickets;
     }
 
-    public void setTickets(NavigableSet<Ticket> tickets) {
+    public void setTickets(Set<Ticket> tickets) {
         this.tickets = tickets;
     }
 
@@ -80,7 +83,6 @@ public class User extends DomainObject {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", tickets=" + tickets +
                 '}';
     }
 }

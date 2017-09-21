@@ -4,7 +4,7 @@ import com.kushmyruk.domain.Auditorium;
 
 import java.util.Set;
 
-public interface AuditoriumService {
+public interface AuditoriumService extends AbstractDomainObjectService<Auditorium> {
     /**
      * Getting all auditoriums from the system
      *
