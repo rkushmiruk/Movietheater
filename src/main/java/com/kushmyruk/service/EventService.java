@@ -3,7 +3,6 @@ package com.kushmyruk.service;
 import com.kushmyruk.domain.Event;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 public interface EventService extends AbstractDomainObjectService<Event> {
@@ -31,6 +30,6 @@ public interface EventService extends AbstractDomainObjectService<Event> {
      *           s
      * @return Set of events
      */
-    Set<Event> getNextEvents(LocalDateTime to);
+    Set<Event> getNextEvents(Date to);
 
 }

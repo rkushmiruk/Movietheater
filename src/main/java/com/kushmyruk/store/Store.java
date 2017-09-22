@@ -1,15 +1,11 @@
 package com.kushmyruk.store;
 
 import com.kushmyruk.domain.*;
-import org.springframework.stereotype.Repository;
-
 import javax.annotation.PostConstruct;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeSet;
 
-@Repository
 public class Store {
     private Map<Long, User> userStore = new HashMap<>();
     private Map<Long, Ticket> ticketStore = new HashMap<>();
@@ -20,7 +16,7 @@ public class Store {
     public void init() {
         Auditorium auditorium = new Auditorium();
 
-        Event event = new Event("JavaDay", new TreeSet<>(), 100.00, EventRating.HIGH, auditorium);
+        Event event = new Event("JavaDay", new Date(new java.util.Date().getTime()), 100.00, EventRating.HIGH, auditorium);
 
         User user1 = new User(1L, "Roman", "Kushmyruk", "Ramon_2@mail.ru");
         User user2 = new User(2L, "Dima", "Kushmyruk", "Ramon@mail.ru");

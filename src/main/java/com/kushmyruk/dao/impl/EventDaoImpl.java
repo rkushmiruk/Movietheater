@@ -50,7 +50,7 @@ public class EventDaoImpl implements EventDao {
 
     @Override
     public boolean assignAuditorium(Event event, Date dateTime, Auditorium auditorium) {
-        if (event.getAirDates().contains(dateTime)) {
+        if (event.getAirDates().equals(dateTime)) {
             event.setAuditorium(auditorium);
             return true;
         }
@@ -59,7 +59,7 @@ public class EventDaoImpl implements EventDao {
 
     @Override
     public boolean removeAuditoriumAssignment(Date dateTime, Event event) {
-        if (event.getAirDates().contains(dateTime)) {
+        if (event.getAirDates().equals(dateTime)) {
             event.setAuditorium(null);
             return true;
         }
@@ -68,42 +68,34 @@ public class EventDaoImpl implements EventDao {
 
     @Override
     public boolean addAirDateTime(Date dateTime, Event event) {
-        return event.getAirDates().add(dateTime);
+        event.setAirDates(dateTime);
+        return true;
     }
 
     @Override
     public boolean addAirDateTime(Event event, Date dateTime, Auditorium auditorium) {
-        boolean result = event.getAirDates().add(dateTime);
-        if (result) {
-            event.setAuditorium(auditorium);
-        }
-        return result;
+        event.setAirDates(dateTime);
+        event.setAuditorium(auditorium);
+        return true;
 
     }
 
     @Override
     public boolean removeAirDateTime(Event event, Date dateTime) {
-        boolean result = event.getAirDates().remove(dateTime);
-        if (result) {
-            event.setAuditorium(null);
-        }
-        return result;
+        event.setAirDates(null);
+        event.setAuditorium(null);
+        return true;
 
-    }
-
-    @Override
-    public boolean airsOnDateTime(Event event, Date dateTime) {
-        return event.getAirDates().stream().anyMatch(dt -> dt.equals(dateTime));
     }
 
     @Override
     public boolean airsOnDate(Event event, Date date) {
-        return event.getAirDates().stream().anyMatch(dt -> dt.equals(date));
+        return event.getAirDates().equals(date);
     }
 
     @Override
     public boolean airsOnDates(Event event, Date from, Date to) {
-        return event.getAirDates().stream().anyMatch(dt -> dt.compareTo(from) >= 0 && dt.compareTo(to) <= 0);
+        return event.getAirDates().getTime() >= from.getTime() && event.getAirDates().getTime() <= to.getTime();
     }
 
     @Autowired

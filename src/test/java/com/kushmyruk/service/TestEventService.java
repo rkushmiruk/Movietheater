@@ -4,7 +4,9 @@ import com.kushmyruk.domain.Event;
 import com.kushmyruk.domain.EventRating;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
@@ -14,20 +16,17 @@ import static org.junit.Assert.assertTrue;
 public class TestEventService {
     private Event event;
 
-//    @Before
-//    public void initEvent() {
-//        event = new Event();
-//        event.setBasePrice(1.1);
-//        event.setName("aaa");
-//        event.setRating(EventRating.HIGH);
-//
-//        LocalDateTime now = LocalDateTime.now();
-//
-//        event.addAirDateTime(now);
-//        event.addAirDateTime(now.plusDays(1));
-//        event.addAirDateTime(now.plusDays(2));
-//    }
-//
+    @Before
+    public void initEvent() {
+        event = new Event();
+        event.setBasePrice(1.1);
+        event.setName("aaa");
+        event.setRating(EventRating.HIGH);
+
+        event.setAirDates(new Date(new java.util.Date().getTime()));
+
+    }
+
 //    @Test
 //    public void testAddRemoveAirDates() {
 //        int size = event.getAirDates().size();

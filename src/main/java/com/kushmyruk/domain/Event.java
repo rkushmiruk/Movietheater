@@ -1,16 +1,15 @@
 package com.kushmyruk.domain;
 
 import java.sql.Date;
-import java.util.*;
 
 public class Event extends DomainObject {
     private String name;
-    private Set<Date> airDates = new TreeSet<>();
+    private Date airDates;
     private Double basePrice;
     private EventRating rating;
     private Auditorium auditorium;
 
-    public Event(String name, Set<Date> airDates, Double basePrice, EventRating rating, Auditorium auditorium) {
+    public Event(String name, Date airDates, Double basePrice, EventRating rating, Auditorium auditorium) {
         this.name = name;
         this.airDates = airDates;
         this.basePrice = basePrice;
@@ -29,11 +28,11 @@ public class Event extends DomainObject {
         this.name = name;
     }
 
-    public Set<Date> getAirDates() {
+    public Date getAirDates() {
         return airDates;
     }
 
-    public void setAirDates(Set<Date> airDates) {
+    public void setAirDates(Date airDates) {
         this.airDates = airDates;
     }
 

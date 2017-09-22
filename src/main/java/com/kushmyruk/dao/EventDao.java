@@ -57,16 +57,6 @@ public interface EventDao extends GenericDao<Event, Long> {
      */
     boolean removeAirDateTime(Event event, Date dateTime);
 
-
-    /**
-     * Checks if event airs on particular date and time
-     *
-     * @param dateTime Date and time to check
-     * @return <code>true</code> event airs on that date and time
-     */
-    boolean airsOnDateTime(Event event, Date dateTime);
-
-
     /**
      * Checks if event airs on particular date
      *
